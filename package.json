@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "timelapse": "./timelapse.sh"
+  },
+  "dependencies": {
+    "@types/node": "~14.0.1",
+    "fluent-ffmpeg": "~2.1.2",
+    "ts-node": "~8.10.1",
+    "typescript": "~3.9.2",
+    "videoshow": "~0.1.12"
+  }
+}

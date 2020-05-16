@@ -7,9 +7,9 @@ const TMP_PATH = '/tmp/timelapse-plant-stills';
 
 // 1 / x kept
 const KEEP_FRAME_RATE = 1;
-const START_IMAGE = 95;
+const START_IMAGE = 0;
 
-const files = fs.readdirSync('stills/');
+const files = fs.readdirSync('/home/nikhilio/stills/');
 const images: string[] = [];
 files.slice(START_IMAGE).forEach((filename, i) => {
   if (i % KEEP_FRAME_RATE === 0) {
@@ -18,7 +18,7 @@ files.slice(START_IMAGE).forEach((filename, i) => {
 });
 console.log('keeping', images);
 images.forEach((image, i) => {
-  fs.copyFileSync(`stills/${image}`, `${TMP_PATH}/${image}`);
+  fs.copyFileSync(`../stills/${image}`, `${TMP_PATH}/${image}`);
 })
 
 async function main() {
@@ -28,8 +28,10 @@ async function main() {
       fps: 25,
       // Glob matching input files
       inputFiles: `${TMP_PATH}/*.jpg`,
-      output: path.resolve(`videos/${date}.mp4`),
+      output: path.resolve(`/home/nikhilio/videos/${date}.mp4`),
     });
+    fs.unlinkSync(`/home/nikhilio/videos/latest.mp4`);
+    fs.copyFileSync(`/home/nikhilio/videos/${date}.mp4`, `/home/nikhilio/videos/latest.mp4`);
   } catch (error) {
     throw new Error(error.message)
   }

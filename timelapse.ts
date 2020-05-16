@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import { createTimelapse } from './util';
 
 const TMP_PATH = '/tmp/timelapse-plant-stills';
+const BASE_PATH = '/home/nikhilio/';
 
 // 1 / x kept
 const KEEP_FRAME_RATE = 1;
@@ -28,10 +29,13 @@ async function main() {
       fps: 25,
       // Glob matching input files
       inputFiles: `${TMP_PATH}/*.jpg`,
-      output: path.resolve(`/home/nikhilio/videos/${date}.mp4`),
+      output: path.resolve(`${BASE_PATH}${date}.mp4`),
     });
-    fs.unlinkSync(`/home/nikhilio/videos/latest.mp4`);
-    fs.copyFileSync(`/home/nikhilio/videos/${date}.mp4`, `/home/nikhilio/videos/latest.mp4`);
+    fs.unlinkSync(`${BASE_PATH}latest.mp4`);
+    fs.copyFileSync(`${BASE_PATH}${date}.mp4`, `${BASE_PATH}latest.mp4`);
+    fs.writeFileSync(`${BASE_PATH}manifest.json`, JSON.stringify({
+      date: `${new Date().toLocaleString()}`
+    }));
   } catch (error) {
     throw new Error(error.message)
   }

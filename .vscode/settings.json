@@ -1,0 +1,23 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "search.exclude": {
+      "**/node_modules": true,
+      "dist/": true,
+      "**/yarn.lock": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "[javascript]": {
+      "editor.formatOnSave": true
+    },
+    "[typescript]": {
+      "editor.formatOnSave": true
+    },
+    "files.insertFinalNewline": true,
+    "editor.detectIndentation": false,
+    "editor.wrappingIndent": "none",
+    "files.exclude": {
+      "node_modules/": true
+    }
+  }

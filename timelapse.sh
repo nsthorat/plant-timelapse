@@ -1,7 +1,3 @@
-#gsutil -m cp gs://timelapse-plant-stills/stills/*.jpg stills
-cd /home/nikhilio/plant-timelapse/
+cd /home/nsthorat/plant-timelapse/
 
-rm -rf /tmp/timelapse-plant-stills
-mkdir -p /tmp/timelapse-plant-stills
-
-yarn ts-node /home/nikhilio/plant-timelapse/timelapse.ts
+yarn ts-node /home/nsthorat/plant-timelapse/timelapse.ts

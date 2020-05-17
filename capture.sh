@@ -2,6 +2,7 @@ set -e
 
 cd /home/nikhilio/plant-timelapse/
 
+
 DATE=$(date +%Y-%m-%d_%H_%M_%S.jpg)
 
 raspistill -v -o /home/nikhilio/stills/$DATE

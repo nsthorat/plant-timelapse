@@ -5,7 +5,7 @@ import { createTimelapse } from './util';
 
 const HOME_PATH = '/home/nsthorat';
 const STILLS_PATH = `${HOME_PATH}/gcs-timelapse-plant-stills/stills`;
-const TMP_VIDEO_PATH = `${HOME_PATH}`;
+const TMP_VIDEO_PATH = `${HOME_PATH}/tmp-videos`;
 
 const FPS = 20;
 console.log(STILLS_PATH);
@@ -19,10 +19,10 @@ async function main() {
     await createTimelapse({
       fps: FPS,
       // Glob matching input files
-      inputFiles: `${STILLS_PATH}/stills/*.jpg`,
-      output: `${TMP_VIDEO_PATH}/latest.mp4`,
+      inputFiles: `${STILLS_PATH}/*.jpg`,
+      output: `${TMP_VIDEO_PATH}/latest_v2.mp4`,
     });
-    fs.writeFileSync(`${TMP_VIDEO_PATH}/manifest.json`, JSON.stringify({
+    fs.writeFileSync(`${TMP_VIDEO_PATH}/manifest_v2.json`, JSON.stringify({
       date: `${new Date().toLocaleString()}`,
       fps: FPS
     }));

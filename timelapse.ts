@@ -12,6 +12,8 @@ console.log(STILLS_PATH);
 
 
 // TODO: Add filenames, and a bit saying what the last image read is.
+const filenames = fs.readdirSync(STILLS_PATH).map(file => file.name);
+
 
 async function main() {
   const date = getFormattedTime();
@@ -24,7 +26,8 @@ async function main() {
     });
     fs.writeFileSync(`${TMP_VIDEO_PATH}/manifest_v2.json`, JSON.stringify({
       date: `${new Date().toLocaleString()}`,
-      fps: FPS
+      fps: FPS,
+      filenames
     }));
   } catch (error) {
     throw new Error(error.message)
